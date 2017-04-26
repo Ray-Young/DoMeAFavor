@@ -1,5 +1,7 @@
 package ws;
 
+import java.util.ArrayList;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
@@ -40,11 +42,11 @@ public class UserService {
 		// ArrayList<User> datas = dao.getUsers();
 		// Gson gson = new Gson();
 		// users = gson.toJson(datas);
-		User users = new User();
-		users.setName("aaa");
+		UserDAO dao = new UserDAO();
+		ArrayList<User> datas = dao.getUsers();
+
 		Gson gson = new Gson();
-		System.out.println("aa" + gson.toJson(users));
-		return gson.toJson(users);
+		return gson.toJson(datas);
 	}
 
 	@POST

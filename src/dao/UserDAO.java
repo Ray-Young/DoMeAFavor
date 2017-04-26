@@ -19,7 +19,6 @@ public class UserDAO {
 		while (result.next()) {
 
 			User data = new User();
-			data.setId(result.getInt("id"));
 			data.setName(result.getString("name"));
 			datas.add(data);
 		}
