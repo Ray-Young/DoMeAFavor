@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:hint="input here..."
+        android:textColor="@color/colorBlack"
+        android:id="@+id/editTextMsg"
+        android:layout_weight="0.5"/>
+
+    <TextView
+        android:text="Date here..."
+        android:textSize="15sp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/editTextMsg"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/textView16"
+        android:layout_weight="1"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_weight="1.1"
+        >
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+        </FrameLayout>
+
+        <Button
+            android:background="@android:drawable/ic_menu_send"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/button17"
+            android:layout_weight="1"
+            android:onClick="upLoad"
+            android:textColor="@color/lightBlack" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+        </FrameLayout>
+
+        <Button
+            android:text="\"
+            android:background="@android:drawable/ic_menu_close_clear_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/button18"
+            android:layout_weight="1"
+            android:onClick="cancel"
+            android:textColor="@color/lightBlack"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+        </FrameLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

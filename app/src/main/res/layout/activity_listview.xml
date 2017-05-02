@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/LVLL"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:background="?android:attr/actionModeSplitBackground">
+
+
+        <TextView
+            android:text="post theme 1 here..."
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            style="@style/Theme"
+            android:id="@+id/LVtheme" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <Button
+                android:text="Enter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/LVbutton"
+                android:layout_weight="1"
+                android:textColor="@color/lightBlack"
+                android:background="@drawable/surepay_logo" />
+
+            <TextView
+                android:text="post date here..."
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/LVtime"
+                android:layout_weight="1"
+                android:textAlignment="center" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+</RelativeLayout>

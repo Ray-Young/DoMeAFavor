@@ -1,0 +1,1 @@
+include ':app', ':jersey-bundle-1.17.1', ':asm-3.1', ':gson-2.3.1', ':android-async-http-1.4.9  ---', ':httpclient-4.4.1.2 ---', ':sdkui'

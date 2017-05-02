@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageButton
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:srcCompat="@mipmap/ic_launcher"
+                    android:layout_below="@+id/top5"
+                    android:layout_toStartOf="@+id/top5"
+                    android:id="@+id/imageButton"
+                    android:onClick="seeProfile"
+                    android:layout_weight="1"
+                    android:background="@color/colorWhite" />
+
+                <TextView
+                    android:text="Poster Name"
+                    style="@style/UserName"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/textView11"
+                    android:layout_toEndOf="@id/imageButton"
+                    android:layout_alignBottom="@+id/imageButton"
+                    android:layout_alignEnd="@+id/top5"
+                    android:textSize="25sp"
+                    android:layout_weight="1"
+                    android:gravity="center"/>
+
+                <TextView
+                    android:text="reward"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_above="@+id/textView12"
+                    android:layout_alignParentEnd="true"
+                    android:textSize="25sp"
+                    android:id="@+id/textViewReward"
+                    android:textColor="@color/lightBlack"
+                    android:layout_weight="1"
+                    android:gravity="center"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:text="Theme here.."
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            style="@style/Theme"
+            android:layout_below="@+id/textView11"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/textView12"
+            android:gravity="center"
+            android:textSize="25sp"
+            android:layout_weight="1.1"/>
+
+        <TextView
+            android:text="Detail here..."
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/textView12"
+            android:layout_alignStart="@+id/textView12"
+            android:id="@+id/textView13"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:layout_weight="0.9" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:srcCompat="@mipmap/ic_launcher"
+            android:layout_below="@+id/textView13"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/imageView2"
+            android:layout_weight="0.9" />
+
+        <TextView
+            android:text="Location here..."
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/imageView2"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/textView14"
+            android:layout_weight="1.1"
+            android:gravity="center"/>
+
+        <TextView
+            android:text="Date here..."
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/textView14"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/textView15"
+            android:layout_weight="1.1"
+            android:gravity="center"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/textView15"
+            android:layout_centerHorizontal="true"
+            android:layout_weight="1">
+
+
+            <Button
+                android:text="Help Out"
+                android:background="@color/colorWhite"
+                android:textSize="12sp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/button14"
+                android:layout_weight="1"
+                android:onClick="helpOut"
+                android:textColor="@color/lightBlack"/>
+
+            <Button
+                android:text="Leave"
+                android:background="@color/colorWhite"
+                android:textSize="12sp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/button15"
+                android:layout_weight="1"
+                android:onClick="leave"
+                android:textColor="@color/lightBlack"/>
+
+            <Button
+                android:text="See more"
+                android:background="?android:attr/selectableItemBackground"
+                android:textSize="12sp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/button11"
+                android:layout_weight="1"
+                android:onClick="seeMore"
+                android:textColor="@color/lightBlack"/>
+
+            <Button
+                android:text="Main Page"
+                android:background="?android:attr/selectableItemBackground"
+                android:textSize="12sp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/button16"
+                android:layout_weight="1"
+                android:onClick="toMain"
+                android:textColor="@color/lightBlack"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>
