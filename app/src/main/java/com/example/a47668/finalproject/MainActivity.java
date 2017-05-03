@@ -88,6 +88,8 @@ public class MainActivity extends AppCompatActivity
     private GestureDetectorCompat GD;
     private Button btnPersonal, btnPost, btnMessage;
     private static String[] bubbleTitle;
+    public static Location mCurrentLocation;
+    public static LatLng latLngto;
 
     private ArrayList<Object> postIDList = new ArrayList<>();
     private ArrayList<Object> titleList = new ArrayList<>();
@@ -177,6 +179,8 @@ public class MainActivity extends AppCompatActivity
 
     public void toPost(View v) {
         Intent intentPost = new Intent(this, PostActivity.class);
+        System.out.println(latLngto);
+        intentPost.putExtra("currentLocation",latLngto.toString());
         this.startActivity(intentPost);
     }
 
@@ -249,8 +253,8 @@ public class MainActivity extends AppCompatActivity
 
     public void onConnected(Bundle dataBundle) {
         // Get last known recent location.
-        Location mCurrentLocation = null;
-        try {
+        mCurrentLocation = null;
+        try{
             mCurrentLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
         } catch (SecurityException se) {
             Log.i("DEBUG", "err");
@@ -261,6 +265,7 @@ public class MainActivity extends AppCompatActivity
             // Print current location if not null
             Log.d("DEBUG", "current location: " + mCurrentLocation.toString());
             LatLng latLng = new LatLng(mCurrentLocation.getLatitude(), mCurrentLocation.getLongitude());
+            latLngto = latLng;
             //LatLng myLocation = new LatLng(42.3601, 71.0589) ;
 //private const int MAP_ZOOM = 11 ;
             mgoogleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 12));

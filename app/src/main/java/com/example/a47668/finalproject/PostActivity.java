@@ -64,6 +64,7 @@ public class PostActivity extends AppCompatActivity {
     private int intUserId;
     private String stringUserName;
     private String stringImgPath;
+    private String currentLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +72,15 @@ public class PostActivity extends AppCompatActivity {
         setContentView(R.layout.activity_post);
         setTitle("Post A Task");
 
+        Bundle extras = getIntent().getExtras();
+        if(extras != null) {
+            currentLocation = extras.getString("currentLocation");
+        }
+        String[] res = new String[2];
+        String[] res1 = new String[2];
+        res = currentLocation.split("\\(");
+        res1 = res[1].split("\\)");
+        currentLocation = res1[0];
         dsl = new dataSingleton();
         postTheme = (EditText)findViewById(R.id.EditText9);
         postDetail = (EditText)findViewById(R.id.EditText);
@@ -170,7 +180,7 @@ public class PostActivity extends AppCompatActivity {
         //add new post the server...
         stringTheme = postTheme.getText().toString();
         stringDetail = postDetail.getText().toString();
-        stringLocation = "42.349876, -71.099486";
+        stringLocation = currentLocation; //get the currentLocation.
         try {  
             intReward = Integer.parseInt(postReward.getText().toString());
         }catch (NumberFormatException nfe){

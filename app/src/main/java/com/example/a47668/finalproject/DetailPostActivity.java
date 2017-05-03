@@ -98,6 +98,9 @@ public class DetailPostActivity extends AppCompatActivity {
         imgPost.setImageBitmap(imgBitmap);
         imgProfile.setImageBitmap(profileBitmap);
 
+        if (imgBitmap != null) {
+            imgBitmap = null;
+        }
     }
 
     //get the image of this specific post...
