@@ -382,8 +382,8 @@ public class MainActivity extends AppCompatActivity
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.itemID1) {
-            Toast.makeText(getBaseContext(), "item1.", Toast.LENGTH_LONG).show();
-            return true;
+            Intent refreshIntent = new Intent(this,MainActivity.class);
+            this.startActivity(refreshIntent);
         }
         if (id == R.id.itemID2) {
             //Toast.makeText(getBaseContext(), "item2.", Toast.LENGTH_LONG).show();
