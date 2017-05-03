@@ -22,5 +22,7 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="/Users/shuhanliu/Downloads/commons-io-2.5/commons-io-2.5-javadoc.jar"/>
+	<classpathentry kind="lib" path="/Users/shuhanliu/Downloads/commons-io-2.5/commons-io-2.5.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

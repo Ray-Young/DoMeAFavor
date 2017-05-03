@@ -4,11 +4,39 @@ public class User {
 
 	private int id;
 
-	private String loginID;
+	private String fbToken;
 
 	private String name;
 
 	private String email;
+	
+	private int credit;
+	
+	private String fbPhoto;
+
+	public String getFbPhoto() {
+		return fbPhoto;
+	}
+
+	public void setFbPhoto(String fbPhoto) {
+		this.fbPhoto = fbPhoto;
+	}
+
+	public String getFBToken() {
+		return fbToken;
+	}
+
+	public void setFBToken(String fbToken) {
+		this.fbToken = fbToken;
+	}
+
+	public int getCredit() {
+		return credit;
+	}
+
+	public void setCredit(int credit) {
+		this.credit = credit;
+	}
 
 	private boolean active;
 
@@ -25,10 +53,10 @@ public class User {
 	 * @param name
 	 *            the login ID
 	 */
-	public User(String loginID) {
-		super();
-		this.loginID = loginID;
-	}
+//	public User(String loginID) {
+//		super();
+//		this.loginID = loginID;
+//	}
 
 	/**
 	 * @return the id
@@ -48,17 +76,6 @@ public class User {
 	/**
 	 * @return the loginID
 	 */
-	public String getLoginID() {
-		return loginID;
-	}
-
-	/**
-	 * @param loginID
-	 *            the loginID to set
-	 */
-	public void setLoginID(String loginID) {
-		this.loginID = loginID;
-	}
 
 	/**
 	 * @return the name
