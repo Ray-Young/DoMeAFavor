@@ -43,6 +43,10 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
+/**
+ * Changed on May 2nd, 2017
+ * This activity has the methods for show more post
+ */
 public class SeeMoreActivity extends AppCompatActivity {
     private
     ListView lvEpisodes;
@@ -74,7 +78,7 @@ public class SeeMoreActivity extends AppCompatActivity {
                 titleList.add(dataObj.get("title"));
                 dateList.add(dataObj.get("date"));
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -84,18 +88,22 @@ public class SeeMoreActivity extends AppCompatActivity {
         lvEpisodes.setAdapter(lvAdapter);
 
     }
-    public void toDetailPost(View v){
+
+    public void toDetailPost(View v) {
         Intent intentToDetailPost = new Intent(this, DetailPostActivity.class);
         this.startActivity(intentToDetailPost);
     }
-    public void returnToLast(View v){
+
+    public void returnToLast(View v) {
         this.finish();
     }
-    public void mainPage(View v){
-        Intent intentMain = new Intent(this,MainActivity.class);
+
+    public void mainPage(View v) {
+        Intent intentMain = new Intent(this, MainActivity.class);
         this.startActivity(intentMain);
     }
-    public String getOverView() throws Exception{
+
+    public String getOverView() throws Exception {
         URL url = new URL("http://sample-env.mebx8vgf3h.us-west-2.elasticbeanstalk.com/rest/post/getOverview");
         HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
         try {
@@ -106,8 +114,9 @@ public class SeeMoreActivity extends AppCompatActivity {
             urlConnection.disconnect();
         }
     }
-    private static void getPostDetail(int postID) throws Exception{
-        URL url = new URL("http://sample-env.mebx8vgf3h.us-west-2.elasticbeanstalk.com/rest/post/getDetail?postID="+postID);
+
+    private static void getPostDetail(int postID) throws Exception {
+        URL url = new URL("http://sample-env.mebx8vgf3h.us-west-2.elasticbeanstalk.com/rest/post/getDetail?postID=" + postID);
         HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
 
         try {
@@ -116,7 +125,7 @@ public class SeeMoreActivity extends AppCompatActivity {
             JSONObject dataObj = new JSONObject(tmp);
             String base64String = dataObj.getString("attachments");
             //int userID = dataObj.getInt("userID");
-            if(!base64String.equals("no image")) {
+            if (!base64String.equals("no image")) {
                 byte[] decodedString = Base64.decode(base64String, Base64.DEFAULT);
                 Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
                 //imgBitmap = decodedByte;
@@ -128,23 +137,22 @@ public class SeeMoreActivity extends AppCompatActivity {
             //postReward = dataObj.getInt("reward");
             posterID = dataObj.getInt("userID");
             //postIsSolved = dataObj.getBoolean("isSolved");
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             urlConnection.disconnect();
         }
     }
 
     private static String convertInputStreamToString(InputStream inputStream) throws IOException {
-        BufferedReader bufferedReader = new BufferedReader( new InputStreamReader(inputStream));
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
         String line = "";
         String result = "";
-        while((line = bufferedReader.readLine()) != null)
+        while ((line = bufferedReader.readLine()) != null)
             result += line;
         inputStream.close();
         return result;
     }
-
 
 
     class MyCustomAdapter extends BaseAdapter {
@@ -152,26 +160,17 @@ public class SeeMoreActivity extends AppCompatActivity {
         private
         String title[];             //this is the introductory way to store the List data.  The way it's usually done is by creating
         String date[];  //the "better" way is to encapsulate the list items into an object, then create an arraylist of objects.
-//     int episodeImages[];         //this approach is fine for now.
-
-        //    ArrayList<String> episodes;
-
-        //ArrayList<Integer> episodeImages;  //Well, we can use one arrayList too...
 
         Context context;   //What does refer to?  Context enables access to application specific resources.  Eg, spawning & receiving intents, locating the various managers.
 
         public MyCustomAdapter(Context aContext) {
-//initializing our data in the constructor.
-//        episodes = (ArrayList<String>) Arrays.asList(aContext.getResources().getStringArray(R.array.episodes));  //retrieving list of episodes predefined in strings-array "episodes" in strings.xml
-//        episodeDescriptions = (ArrayList<String>) Arrays.asList(aContext.getResources().getStringArray(R.array.episode_descriptions));  //Also casting to a friendly ArrayList.
+            //initializing our data in the constructor.
             context = aContext;  //saving the context we'll need it again.
 
-            //episodes = aContext.getResources().getStringArray(R.array.episodes);  //retrieving list of episodes predefined in strings-array "episodes" in strings.xml
-            //episodeDescriptions = aContext.getResources().getStringArray(R.array.episode_descriptions);
             int len = titleList.size();
             title = new String[len];
             date = new String[len];
-            for(int i=0;i<titleList.size();i++){
+            for (int i = 0; i < titleList.size(); i++) {
                 title[i] = titleList.get(i).toString();
                 date[i] = dateList.get(i).toString();
             }
@@ -181,13 +180,11 @@ public class SeeMoreActivity extends AppCompatActivity {
 
         @Override
         public int getCount() {
-//        return episodes.size();  //all of the arrays are same length, so return length of any... ick!  But ok for now. :)
             return title.length;  //all of the arrays are same length, so return length of any... ick!  But ok for now. :)
         }
 
         @Override
         public Object getItem(int position) {
-//        return episodes.get(position);  //In Case you want to use an ArrayList
             return title[position];  //really should be retuning entire set of row data, but it's up to us, and we aren't using.
         }
 
@@ -207,12 +204,9 @@ public class SeeMoreActivity extends AppCompatActivity {
                 row = convertView;
             }
             // 2. Now that we have a valid row instance, we need to get references to the views within that row.
-            //ImageView imgEpisode = (ImageView) row.findViewById(R.id.imgEpisode);  //notice we prefixed findViewByID with row, why?  row, is the container.
             TextView LVtheme = (TextView) row.findViewById(R.id.LVtheme);
             TextView LVtime = (TextView) row.findViewById(R.id.LVtime);
-            lvButton = (Button)row.findViewById(R.id.LVbutton);
-//        tvEpisodeTitle.setText(episodes.get(position));  //puts the predefined titles in the textview.
-//
+            lvButton = (Button) row.findViewById(R.id.LVbutton);
             LVtheme.setText(title[position]);
             LVtime.setText(date[position]);
 
@@ -222,7 +216,7 @@ public class SeeMoreActivity extends AppCompatActivity {
                     public void onClick(View v) {
                         System.out.println("now" + String.valueOf(position) + "is clicked");
                         Intent intentMyDetailPost = new Intent(act, MyDetailPostActivity.class);
-                        String realPostId = ""+ postIDList.get(position);//dsl.getInstance().getPostId().get(Integer.valueOf((String)myPostIdList.get(position))).toString();
+                        String realPostId = "" + postIDList.get(position);//dsl.getInstance().getPostId().get(Integer.valueOf((String)myPostIdList.get(position))).toString();
                         try {
                             getPostDetail(Integer.valueOf(realPostId));
                         } catch (Exception e) {
@@ -230,18 +224,18 @@ public class SeeMoreActivity extends AppCompatActivity {
                         }
                         System.out.println("realPostId here: " + realPostId);
                         intentMyDetailPost.putExtra("realPostId", realPostId);
-                        if(posterID == dsl.getInstance().getMyUserId()){
+                        if (posterID == dsl.getInstance().getMyUserId()) {
                             act.startActivity(intentMyDetailPost);
-                        }else{
-                            Intent intentDetailPost = new Intent(act,DetailPostActivity.class);
-                            intentDetailPost.putExtra("PostId",realPostId);
+                        } else {
+                            Intent intentDetailPost = new Intent(act, DetailPostActivity.class);
+                            intentDetailPost.putExtra("PostId", realPostId);
                             act.startActivity(intentDetailPost);
                         }
 
 
                     }
                 });
-            }catch(Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
 
@@ -256,8 +250,8 @@ public class SeeMoreActivity extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menupost, menu);
         return true;  //we've handled it!
-        //return super.onCreateOptionsMenu(menu);  //what happens if we let this run?
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();

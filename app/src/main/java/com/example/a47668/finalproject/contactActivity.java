@@ -24,6 +24,7 @@ import java.net.URL;
 
 /**
  * Created by 47668 on 2017/5/1.
+ * This class contains method for payment related methods
  */
 
 public class contactActivity extends AppCompatActivity {
@@ -41,6 +42,7 @@ public class contactActivity extends AppCompatActivity {
     private static int postID;
 
     @Override
+    // Oncreate method for the activity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact);
@@ -68,9 +70,9 @@ public class contactActivity extends AppCompatActivity {
 
     }
 
-    public void toPayU(View v){
-        Intent intentToPayU = new Intent(this,payU1Activity.class);
-        intentToPayU.putExtra("email",senderEmail);
+    public void toPayU(View v) {
+        Intent intentToPayU = new Intent(this, payU1Activity.class);
+        intentToPayU.putExtra("email", senderEmail);
         this.startActivity(intentToPayU);
     }
 
@@ -80,51 +82,53 @@ public class contactActivity extends AppCompatActivity {
         cancelOffer(postID);
     }
 
-    private static void offer(int messageID){
+    // Handle the offer, send restful web request to get the offer list
+    private static void offer(int messageID) {
         try {
-            URL url = new URL("http://sample-env.mebx8vgf3h.us-west-2.elasticbeanstalk.com/rest/post/offer?messageID="+messageID);
+            URL url = new URL("http://sample-env.mebx8vgf3h.us-west-2.elasticbeanstalk.com/rest/post/offer?messageID=" + messageID);
             System.out.println(url);
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
             InputStream in = new BufferedInputStream(urlConnection.getInputStream());
             System.out.println(convertInputStreamToString(in));
             urlConnection.disconnect();
 
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private static void cancelOffer(int postID){
+    // Restful webService, send cancel offer option
+    private static void cancelOffer(int postID) {
         try {
-            URL url = new URL("http://sample-env.mebx8vgf3h.us-west-2.elasticbeanstalk.com/rest/post/cancel?postID="+postID);
+            URL url = new URL("http://sample-env.mebx8vgf3h.us-west-2.elasticbeanstalk.com/rest/post/cancel?postID=" + postID);
             System.out.println(url);
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
             InputStream in = new BufferedInputStream(urlConnection.getInputStream());
             System.out.println(convertInputStreamToString(in));
             urlConnection.disconnect();
 
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-
-    private static void getUser2(int userID) throws Exception{
-        URL url = new URL("http://sample-env.mebx8vgf3h.us-west-2.elasticbeanstalk.com/rest/user/getUser2"+"?userID="+userID);
+    // Restful methond, get user from server
+    private static void getUser2(int userID) throws Exception {
+        URL url = new URL("http://sample-env.mebx8vgf3h.us-west-2.elasticbeanstalk.com/rest/user/getUser2" + "?userID=" + userID);
         System.out.println(url);
         HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
         try {
             InputStream in = new BufferedInputStream(urlConnection.getInputStream());
             String tmp = convertInputStreamToString(in);
             JSONObject dataObj = new JSONObject(tmp);
-            System.out.println("User ID is: "+userID);
+            System.out.println("User ID is: " + userID);
             senderName = dataObj.getString("name");
             senderEmail = dataObj.getString("email");
             String base64String = dataObj.getString("fbPhoto");
-            byte[] decodedString = Base64.decode(base64String,Base64.DEFAULT);
-            senderImage = BitmapFactory.decodeByteArray(decodedString,0,decodedString.length);
-            System.out.println("name is: "+senderName);
-            System.out.println("Email is: '"+senderEmail);
+            byte[] decodedString = Base64.decode(base64String, Base64.DEFAULT);
+            senderImage = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+            System.out.println("name is: " + senderName);
+            System.out.println("Email is: '" + senderEmail);
 
 
         } finally {
@@ -133,15 +137,14 @@ public class contactActivity extends AppCompatActivity {
     }
 
     private static String convertInputStreamToString(InputStream inputStream) throws IOException {
-        BufferedReader bufferedReader = new BufferedReader( new InputStreamReader(inputStream));
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
         String line = "";
         String result = "";
-        while((line = bufferedReader.readLine()) != null)
+        while ((line = bufferedReader.readLine()) != null)
             result += line;
         inputStream.close();
         return result;
     }
-
 
 
 }

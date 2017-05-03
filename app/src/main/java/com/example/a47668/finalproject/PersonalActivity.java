@@ -11,9 +11,13 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+/**
+ * Changed on 2017/05/02
+ * This class has the methods for Show the personal Activity
+ */
 public class PersonalActivity extends AppCompatActivity
         implements GestureDetector.OnGestureListener,
-        GestureDetector.OnDoubleTapListener{
+        GestureDetector.OnDoubleTapListener {
 
     private GestureDetectorCompat GD;
     private dataSingleton dsl = new dataSingleton();
@@ -21,16 +25,17 @@ public class PersonalActivity extends AppCompatActivity
     TextView userEmail;
     ImageView myPhoto;
     Bitmap fbBitMap = dsl.getInstance().getFbPhoto();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal);
         setTitle("My Info");
 
-        myPhoto = (ImageView)findViewById(R.id.imageView);
-        userEmail = (TextView)findViewById(R.id.textViewEmail) ;
+        myPhoto = (ImageView) findViewById(R.id.imageView);
+        userEmail = (TextView) findViewById(R.id.textViewEmail);
         userEmail.setText(dsl.getInstance().getFbEmail());
-        userName = (TextView)findViewById(R.id.textView4) ;
+        userName = (TextView) findViewById(R.id.textView4);
         userName.setText(dsl.getInstance().getMyUserName().toString());
         myPhoto.setImageBitmap(fbBitMap);
 
@@ -38,22 +43,23 @@ public class PersonalActivity extends AppCompatActivity
         GD.setOnDoubleTapListener(this);   //DoubleTaps implemented a bit differently, must be bound like this.
 
     }
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         this.GD.onTouchEvent(event);               //insert this line to consume the touch event locally by our GD,
         return super.onTouchEvent(event);          //if we have a handler for the touch event we will handle before passing on.
     }
 
-    public void toMain(View v){
+    public void toMain(View v) {
         this.finish();
     }
 
-    public void toMyPost(View v){
+    public void toMyPost(View v) {
         Intent intentMyPost = new Intent(this, MyPostActivity.class);
         this.startActivity(intentMyPost);
     }
 
-    public void toMySolution(View v){
+    public void toMySolution(View v) {
         Intent intentMySolution = new Intent(this, MySolutionActivity.class);
         this.startActivity(intentMySolution);
     }
@@ -101,10 +107,10 @@ public class PersonalActivity extends AppCompatActivity
 
     @Override
     public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-        if(e2.getX() - e1.getX() < -300 ){
+        if (e2.getX() - e1.getX() < -300) {
             Intent intentMain = new Intent(this, MainActivity.class);
             this.startActivity(intentMain);
-            overridePendingTransition(R.anim.tleft,0);
+            overridePendingTransition(R.anim.tleft, 0);
         }
 
         return false;

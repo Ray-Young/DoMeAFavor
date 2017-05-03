@@ -7,6 +7,10 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RatingBar;
 
+/**
+ * Changed on 2017/05/02
+ * This activity has the methods for rating function
+ */
 public class RateActivity extends AppCompatActivity {
     private RatingBar ratingBar1;
 
@@ -15,7 +19,7 @@ public class RateActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rate);
 
-        ratingBar1 = (RatingBar)findViewById(R.id.ratingBar1);
+        ratingBar1 = (RatingBar) findViewById(R.id.ratingBar1);
         ratingBar1.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -27,7 +31,6 @@ public class RateActivity extends AppCompatActivity {
                 return false;
             }
         });
-
 
 
     }

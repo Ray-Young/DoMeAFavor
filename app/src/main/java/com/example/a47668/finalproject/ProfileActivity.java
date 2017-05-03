@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 /**
  * Created by 47668 on 2017/5/1.
+ * This activity has the methods for Personal profile
  */
 
 public class ProfileActivity extends AppCompatActivity {
