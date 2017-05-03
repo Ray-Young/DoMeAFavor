@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 /**
  * Created by 47668 on 2017/4/27.
+ * This class maintain the global variables
  */
 public class dataSingleton {
     private static dataSingleton ourInstance = new dataSingleton();

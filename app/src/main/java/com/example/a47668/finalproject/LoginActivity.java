@@ -48,6 +48,11 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Arrays;
 
+/**
+ * Commented on May 2nd, 2017
+ * This Activity has the codes for facebook login
+ */
+
 public class LoginActivity extends AppCompatActivity {
     LoginButton loginButton;
     TextView txtView;

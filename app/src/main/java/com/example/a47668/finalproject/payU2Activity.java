@@ -6,6 +6,10 @@ import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
 
+/**
+ * Changed on May 2nd
+ * This activity is the entrance of PayU Api
+ */
 public class payU2Activity extends AppCompatActivity {
 
     @Override

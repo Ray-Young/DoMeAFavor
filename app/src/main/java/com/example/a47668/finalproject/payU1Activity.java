@@ -44,8 +44,10 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Iterator;
 
-
-
+/**
+ * Changed on May 2nd
+ * This activity has the code for PayU Apis
+ */
 public class payU1Activity extends AppCompatActivity implements OneClickPaymentListener {
 
     private String merchantKey, userCredentials;
@@ -67,26 +69,11 @@ public class payU1Activity extends AppCompatActivity implements OneClickPaymentL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payu1);
-/**
-        Bundle extras = getIntent().getExtras();
-        if(extras != null) {
-            email = extras.getString("email");
-        }
-        System.out.println("email receiced:"+email);
-        txtEmail = (EditText)findViewById(R.id.editTextEmail);
-        txtEmail.setText(email);
-**/
-        //TODO Must write this code if integrating One Tap payments
+        //Must write this code if integrating One Tap payments
         OnetapCallback.setOneTapCallback(this);
 
-        //TODO Must write below code in your activity to set up initial context for PayU
+        //Must write below code in your activity to set up initial context for PayU
         Payu.setInstance(this);
-
-        // lets set up the tool bar;
-           /* Toolbar toolBar = (Toolbar) findViewById(R.id.app_bar);
-            toolBar.setTitle("PayU Demo App");
-            toolBar.setTitleTextColor(Color.WHITE);
-            setSupportActionBar(toolBar); */
 
         // lets tell the people what version of sdk we are using
         PayUSdkDetails payUSdkDetails = new PayUSdkDetails();
@@ -95,10 +82,7 @@ public class payU1Activity extends AppCompatActivity implements OneClickPaymentL
 
         //Lets setup the environment spinner
         environmentSpinner = (Spinner) findViewById(R.id.spinner_environment);
-        //  List<String> list = new ArrayList<String>();
         String[] environmentArray = getResources().getStringArray(R.array.environment_array);
-/*        list.add("Test");
-        list.add("Production");*/
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, environmentArray);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -115,8 +99,7 @@ public class payU1Activity extends AppCompatActivity implements OneClickPaymentL
                     * own key in PRODUCTION_ENV
                     */
                     ((EditText) findViewById(R.id.editTextMerchantKey)).setText("0MQaQP");
-                }
-                else{
+                } else {
                     //set the test key in test environment
                     ((EditText) findViewById(R.id.editTextMerchantKey)).setText("gtKFFx");
 
@@ -143,19 +126,10 @@ public class payU1Activity extends AppCompatActivity implements OneClickPaymentL
                  * PayU sends the same response to merchant server and in app. In response check the value of key "status"
                  * for identifying status of transaction. There are two possible status like, success or failure
                  * */
-                /*new android.app.AlertDialog.Builder(this)
-                        .setCancelable(false)
-                        .setMessage("Payu's Data : " + data.getStringExtra("payu_response") + "\n\n\n Merchant's Data: " + data.getStringExtra("result"))
-                        .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int whichButton) {
-                                dialog.dismiss();
-                            }
-                        }).show(); */
-
-                Toast toast = Toast.makeText(getApplicationContext(),"Payment Success!!!",Toast.LENGTH_SHORT);
+                Toast toast = Toast.makeText(getApplicationContext(), "Payment Success!!!", Toast.LENGTH_SHORT);
                 toast.show();
 
-                Intent intentToRate = new Intent(this,RateActivity.class);
+                Intent intentToRate = new Intent(this, RateActivity.class);
                 this.startActivity(intentToRate);
 
 

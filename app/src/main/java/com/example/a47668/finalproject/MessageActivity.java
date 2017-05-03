@@ -10,11 +10,13 @@ import android.view.View;
 
 /**
  * Created by 47668 on 2017/4/2.
+ * Changed by Lei on 2017/5/2
+ * This class contains the methods for send comments at post
  */
 
 public class MessageActivity extends AppCompatActivity
         implements GestureDetector.OnGestureListener,
-        GestureDetector.OnDoubleTapListener{
+        GestureDetector.OnDoubleTapListener {
     private GestureDetectorCompat GD;
 
     @Override
@@ -26,19 +28,22 @@ public class MessageActivity extends AppCompatActivity
         GD.setOnDoubleTapListener(this);   //DoubleTaps implemented a bit differently, must be bound like this.
 
     }
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         this.GD.onTouchEvent(event);               //insert this line to consume the touch event locally by our GD,
         return super.onTouchEvent(event);          //if we have a handler for the touch event we will handle before passing on.
     }
 
-    public void toMain(View v){
+    public void toMain(View v) {
         this.finish();
     }
-    public void toMyDetailPost(View v){
-        Intent intentToMyDetailPost = new Intent(this,MyDetailPostActivity.class);
+
+    public void toMyDetailPost(View v) {
+        Intent intentToMyDetailPost = new Intent(this, MyDetailPostActivity.class);
         this.startActivity(intentToMyDetailPost);
     }
+
     //gesture stuff...
     @Override
     public boolean onSingleTapConfirmed(MotionEvent e) {
@@ -82,10 +87,10 @@ public class MessageActivity extends AppCompatActivity
 
     @Override
     public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-        if(e2.getX() - e1.getX() > 300 ){
+        if (e2.getX() - e1.getX() > 300) {
             Intent intentMain = new Intent(this, MainActivity.class);
             this.startActivity(intentMain);
-            overridePendingTransition(R.anim.toright,0);
+            overridePendingTransition(R.anim.toright, 0);
         }
         return false;
     }

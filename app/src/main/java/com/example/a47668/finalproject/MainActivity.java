@@ -29,7 +29,9 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.model.Marker;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
+
 import android.location.Location;
+
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -40,7 +42,9 @@ import com.sun.jersey.spi.resource.Singleton;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+
 import com.loopj.android.http.*;
+
 import cz.msebera.android.httpclient.Header;
 
 import java.io.BufferedInputStream;
@@ -51,6 +55,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.support.annotation.NonNull;
@@ -69,7 +74,7 @@ public class MainActivity extends AppCompatActivity
         GoogleApiClient.OnConnectionFailedListener,
         LocationListener,
         OnMapReadyCallback,
-        GoogleMap.OnMarkerClickListener{
+        GoogleMap.OnMarkerClickListener {
 
     GoogleMap mgoogleMap;
     private GoogleApiClient mGoogleApiClient;
@@ -81,7 +86,7 @@ public class MainActivity extends AppCompatActivity
     private Marker myMarker;
     private String leo;
     private GestureDetectorCompat GD;
-    private Button btnPersonal,btnPost,btnMessage;
+    private Button btnPersonal, btnPost, btnMessage;
     private static String[] bubbleTitle;
 
     private ArrayList<Object> postIDList = new ArrayList<>();
@@ -95,6 +100,7 @@ public class MainActivity extends AppCompatActivity
     private ArrayList<Object> nameList = new ArrayList<>();
 
     public dataSingleton dsl;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -113,9 +119,9 @@ public class MainActivity extends AppCompatActivity
             StrictMode.setThreadPolicy(policy);
         }
 
-        btnPersonal = (Button)findViewById(R.id.button);
-        btnPost = (Button)findViewById(R.id.button2);
-        btnMessage = (Button)findViewById(R.id.button3);
+        btnPersonal = (Button) findViewById(R.id.button);
+        btnPost = (Button) findViewById(R.id.button2);
+        btnMessage = (Button) findViewById(R.id.button3);
 //download data from server...
         try {
             String overview = getOverView();
@@ -146,7 +152,7 @@ public class MainActivity extends AppCompatActivity
             dsl.getInstance().setName(nameList);
             //int s = dsl.getInstance().getLocation().size();
             //System.out.println(s);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         mGoogleApiClient = new GoogleApiClient.Builder(this)
@@ -164,30 +170,30 @@ public class MainActivity extends AppCompatActivity
         return super.onTouchEvent(event);          //if we have a handler for the touch event we will handle before passing on.
     }
 
-    public void toPersonal(View v){
+    public void toPersonal(View v) {
         Intent intentPersonal = new Intent(this, PersonalActivity.class);
         this.startActivity(intentPersonal);
     }
 
-    public void toPost(View v){
+    public void toPost(View v) {
         Intent intentPost = new Intent(this, PostActivity.class);
         this.startActivity(intentPost);
     }
 
-    public void toMessage(View v){
+    public void toMessage(View v) {
         Intent intentMessage = new Intent(this, MessageActivity.class);
         this.startActivity(intentMessage);
     }
 
     public void bubbleClick(View v) throws Exception {
-        Intent intentBubbleClick = new Intent(this,DetailPostActivity.class);
+        Intent intentBubbleClick = new Intent(this, DetailPostActivity.class);
         String pass = "6";
-        intentBubbleClick.putExtra("PostId",pass);
+        intentBubbleClick.putExtra("PostId", pass);
         this.startActivity(intentBubbleClick);
 
     }
 
-    public String getOverView() throws Exception{
+    public String getOverView() throws Exception {
         URL url = new URL("http://sample-env.mebx8vgf3h.us-west-2.elasticbeanstalk.com/rest/post/getOverview");
         HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
         try {
@@ -201,24 +207,24 @@ public class MainActivity extends AppCompatActivity
 
 
     /**
-    public void getUser(String user)throws Exception{
-
-        URL url = new URL("http://10.250.2.106:8080/DoMeAFavorServer/rest/user/getUser"+"?name="+user);
-        HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-        try {
-            InputStream in = new BufferedInputStream(urlConnection.getInputStream());
-            //System.out.println("---------------"+convertInputStreamToString(in));
-            leo = convertInputStreamToString(in);
-        } finally {
-            urlConnection.disconnect();
-        }
-    }
-**/
+     * public void getUser(String user)throws Exception{
+     * <p>
+     * URL url = new URL("http://10.250.2.106:8080/DoMeAFavorServer/rest/user/getUser"+"?name="+user);
+     * HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+     * try {
+     * InputStream in = new BufferedInputStream(urlConnection.getInputStream());
+     * //System.out.println("---------------"+convertInputStreamToString(in));
+     * leo = convertInputStreamToString(in);
+     * } finally {
+     * urlConnection.disconnect();
+     * }
+     * }
+     **/
     private static String convertInputStreamToString(InputStream inputStream) throws IOException {
-        BufferedReader bufferedReader = new BufferedReader( new InputStreamReader(inputStream));
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
         String line = "";
         String result = "";
-        while((line = bufferedReader.readLine()) != null)
+        while ((line = bufferedReader.readLine()) != null)
             result += line;
         inputStream.close();
         return result;
@@ -244,10 +250,10 @@ public class MainActivity extends AppCompatActivity
     public void onConnected(Bundle dataBundle) {
         // Get last known recent location.
         Location mCurrentLocation = null;
-        try{
+        try {
             mCurrentLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
-        }catch (SecurityException se) {
-            Log.i("DEBUG","err");
+        } catch (SecurityException se) {
+            Log.i("DEBUG", "err");
         }
         Log.d("DEBUG", "current: ");
         // Note that this can be NULL if last location isn't already known.
@@ -257,7 +263,7 @@ public class MainActivity extends AppCompatActivity
             LatLng latLng = new LatLng(mCurrentLocation.getLatitude(), mCurrentLocation.getLongitude());
             //LatLng myLocation = new LatLng(42.3601, 71.0589) ;
 //private const int MAP_ZOOM = 11 ;
-            mgoogleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,12));
+            mgoogleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 12));
         }
         // Begin polling for new location updates.
         startLocationUpdates();
@@ -298,6 +304,7 @@ public class MainActivity extends AppCompatActivity
         // You can now create a LatLng Object for use with maps
         LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
     }
+
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
         Log.i("Fail", "connection failed");
@@ -307,7 +314,8 @@ public class MainActivity extends AppCompatActivity
     private void initMap() {
         MapFragment mf = (MapFragment) getFragmentManager().findFragmentById(R.id.mapfragment);
         mf.getMapAsync(this);
-}
+    }
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
         try {
@@ -341,33 +349,32 @@ public class MainActivity extends AppCompatActivity
             //mgoogleMap.addMarker(new MarkerOptions().position(new LatLng(56.351245, -3.617110)).title("Qn1"));
             myMarker = mgoogleMap.addMarker(new MarkerOptions().position(new LatLng(locationFloatLat[0], locationFloatLog[0])).title(bubbleTitle[0]));
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         mgoogleMap.setOnMarkerClickListener(this);
         LatLng boston = new LatLng(42.407240, -71.120129);
         mgoogleMap.moveCamera(CameraUpdateFactory.newLatLng(boston));
     }
+
     @Override
     public boolean onMarkerClick(Marker marker) {
         marker.getPosition();
         System.out.println("bubble click");
         ArrayList<Object> locationList2;
         locationList2 = dsl.getInstance().getLocation();
-        for(int i=0;i<locationList2.size();i++){
-            if(marker.getTitle().equals(bubbleTitle[i])) {
-                System.out.println("bubble click222222222"+i);
+        for (int i = 0; i < locationList2.size(); i++) {
+            if (marker.getTitle().equals(bubbleTitle[i])) {
+                System.out.println("bubble click222222222" + i);
                 Intent intentBubbleClick = new Intent(this, DetailPostActivity.class);
                 String postIdPass = dsl.getInstance().getPostId().get(i).toString();
                 //String pass = "" + i;
-                intentBubbleClick.putExtra("PostId",postIdPass);
+                intentBubbleClick.putExtra("PostId", postIdPass);
                 this.startActivity(intentBubbleClick);
             }
         }
         return false;
     }
-
-
 
 
     //Menu stuff...
@@ -378,6 +385,7 @@ public class MainActivity extends AppCompatActivity
         return true;  //we've handled it!
         //return super.onCreateOptionsMenu(menu);  //what happens if we let this run?
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -387,7 +395,7 @@ public class MainActivity extends AppCompatActivity
         }
         if (id == R.id.itemID2) {
             //Toast.makeText(getBaseContext(), "item2.", Toast.LENGTH_LONG).show();
-            Intent logOutIntent= new Intent(this,LoginActivity.class);
+            Intent logOutIntent = new Intent(this, LoginActivity.class);
             this.startActivity(logOutIntent);
             //return true;
         }
@@ -437,15 +445,15 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-        if(e2.getX() - e1.getX() < -300 ){
+        if (e2.getX() - e1.getX() < -300) {
             Intent intentMessage = new Intent(this, MessageActivity.class);
             this.startActivity(intentMessage);
-            overridePendingTransition(R.anim.tleft,0);
+            overridePendingTransition(R.anim.tleft, 0);
         }
-        if(e2.getX() - e1.getX() > 300 ){
+        if (e2.getX() - e1.getX() > 300) {
             Intent intentPersonal = new Intent(this, PersonalActivity.class);
             this.startActivity(intentPersonal);
-            overridePendingTransition(R.anim.toright,0);
+            overridePendingTransition(R.anim.toright, 0);
         }
         return false;
     }
