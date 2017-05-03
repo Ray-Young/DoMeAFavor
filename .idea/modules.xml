@@ -2,21 +2,13 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-<<<<<<< HEAD
-      <module fileurl="file://$PROJECT_DIR$/DoMeAFavor-Android-Servlet.iml" filepath="$PROJECT_DIR$/DoMeAFavor-Android-Servlet.iml" />
-      <module fileurl="file://$PROJECT_DIR$/android-async-http-1.4.9  ---/android-async-http-1.4.9  ---.iml" filepath="$PROJECT_DIR$/android-async-http-1.4.9  ---/android-async-http-1.4.9  ---.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DoMeAFavor.iml" filepath="$PROJECT_DIR$/DoMeAFavor.iml" />
       <module fileurl="file://$PROJECT_DIR$/android-async-http-1.4.9  ---/android-async-http-1.4.9  ---.iml" filepath="$PROJECT_DIR$/android-async-http-1.4.9  ---/android-async-http-1.4.9  ---.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/asm-3.1/asm-3.1.iml" filepath="$PROJECT_DIR$/asm-3.1/asm-3.1.iml" />
       <module fileurl="file://$PROJECT_DIR$/asm-3.1/asm-3.1.iml" filepath="$PROJECT_DIR$/asm-3.1/asm-3.1.iml" />
       <module fileurl="file://$PROJECT_DIR$/gson-2.3.1/gson-2.3.1.iml" filepath="$PROJECT_DIR$/gson-2.3.1/gson-2.3.1.iml" />
-      <module fileurl="file://$PROJECT_DIR$/gson-2.3.1/gson-2.3.1.iml" filepath="$PROJECT_DIR$/gson-2.3.1/gson-2.3.1.iml" />
-      <module fileurl="file://$PROJECT_DIR$/httpclient-4.4.1.2 ---/httpclient-4.4.1.2 ---.iml" filepath="$PROJECT_DIR$/httpclient-4.4.1.2 ---/httpclient-4.4.1.2 ---.iml" />
       <module fileurl="file://$PROJECT_DIR$/httpclient-4.4.1.2 ---/httpclient-4.4.1.2 ---.iml" filepath="$PROJECT_DIR$/httpclient-4.4.1.2 ---/httpclient-4.4.1.2 ---.iml" />
       <module fileurl="file://$PROJECT_DIR$/jersey-bundle-1.17.1/jersey-bundle-1.17.1.iml" filepath="$PROJECT_DIR$/jersey-bundle-1.17.1/jersey-bundle-1.17.1.iml" />
-      <module fileurl="file://$PROJECT_DIR$/jersey-bundle-1.17.1/jersey-bundle-1.17.1.iml" filepath="$PROJECT_DIR$/jersey-bundle-1.17.1/jersey-bundle-1.17.1.iml" />
-      <module fileurl="file://$PROJECT_DIR$/sdkui/sdkui.iml" filepath="$PROJECT_DIR$/sdkui/sdkui.iml" />
       <module fileurl="file://$PROJECT_DIR$/sdkui/sdkui.iml" filepath="$PROJECT_DIR$/sdkui/sdkui.iml" />
     </modules>
   </component>
